@@ -1,0 +1,55 @@
+---
+---
+
+<div id="preloader" class="visible">
+    <img src="/gifs/spyro.webp" alt="spyro">
+</div>
+
+<style>
+    div {
+		background-image: url(/images/noisenew.webp);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 92;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .visible {
+        opacity: 1;
+        transition: var(--transition);
+    }
+
+    .hidden {
+        opacity: 0;
+        transition: var(--transition);
+    }
+</style>
+
+<script>
+    // Hide the preloader once the page has finished loading
+    window.addEventListener('load', function(){
+        const preloader = document.getElementById('preloader');
+        
+        if (preloader.classList.contains("visible")) {
+            preloader.classList.remove("visible");
+
+            setTimeout(function() {
+                preloader.classList.add("hidden");
+            }, 500);
+        }
+
+        else {
+            preloader.classList.remove("hidden");
+            preloader.classList.add("visible");
+        }
+
+        setTimeout(function() {
+            preloader.style.display = 'none';
+        }, 800);
+    });
+</script>

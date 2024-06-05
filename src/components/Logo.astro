@@ -1,0 +1,58 @@
+---
+//styles
+import '../styles/global.css'
+
+//props
+interface Props {
+    extraClass?: string;
+    boxClass?: string;
+}
+
+const { extraClass, boxClass } = Astro.props as Props;
+---
+
+<a href="/" class={boxClass}>
+    <img src="/icons/kaido-studio-logo--default.svg" alt="Kaido Studio Logo" class:list={["front", extraClass]}>
+    <img src="/icons/kaido-studio-logo--hover.svg" alt="Kaido Studio Logo" class:list={["behind", extraClass]}>
+</a>
+
+<style>
+    a {
+        position: relative;
+        flex-shrink: 0;
+        
+        img {
+            width: 158px;
+
+            @media (width >= 434px) {
+                width: 229px;
+            }
+        }
+
+        > .front {
+            opacity: 1;        
+            z-index: 2;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        > .behind {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        &:hover .front{
+            opacity: 0;
+        }
+
+        &:hover .behind{
+            opacity: 1;
+        }
+
+    }
+</style>   
+

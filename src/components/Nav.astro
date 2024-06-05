@@ -1,0 +1,226 @@
+---
+//component imports
+import Logo from './Logo.astro'
+import Link from './Link.astro'
+import Button from './Button.astro'
+
+//style imports
+import '../styles/global.css'
+---
+
+<nav>
+    <div class="box">
+        <Logo/>
+        <img src="/gifs/burger-menu.gif" alt="burger menu" class="burger-menu" id="burger-menu">
+        <div class="sans-box">
+            <img src="/gifs/sans-walking.gif" alt="Sans Walking" width="30" height="53" class="sans">
+        </div>
+        <div class="links">
+            <Link href='/' text='Portfolio'/>
+            <Button href='/' text='Let&#39s Talk'/>
+        </div>
+    </div>
+    <div class="navmenu" id="navmenu">
+        <div class="header">
+            <Logo/>
+            <img src="/icons/close-navmenu.webp" alt="Close Nav Menu" width="33" height="42" class="close-navmenu" id="close-navmenu">
+        </div>
+        <div class="links">
+            <Link href='/' text='Portfolio'/>
+            <Button href='mailto:gcaedo.gc@gmail.com' text='Let&#39s Talk' extraClass='navDiv'/>
+        </div>
+        <div class="sans-box">
+            <img src="/gifs/sans-walking.gif" alt="Sans Walking" width="30" height="53" class="sans">
+        </div>
+    </div>
+</nav>
+
+<style>
+    nav {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        @media (width >=1280px) {
+                align-items: center;
+            }
+
+        > .box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 20px;
+
+            @media (width >= 434px) {
+                padding: 40px;
+            }
+
+            @media (width >=1280px) {
+                width: 1280px;
+                padding: 40px 80px;
+            }
+
+            > .links {  
+                display: none;
+
+                @media (width >= 433px) {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 24px;
+                    flex-shrink: 0;
+                }
+
+                @media (width >= 1023px) {
+                    gap: 48px;
+                }
+            }
+
+            >.sans-box {
+                display: none;
+
+                @media (width > 431px) {
+                    display: flex;
+                    margin: 0px 40px;
+                    width: 100%;
+                    position: relative;
+                }
+
+                > .sans {
+                    display: none;
+    
+                    @media (width >= 433px) {
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+
+            >.burger-menu {
+                width: 57px;
+                height: 42px;
+
+                @media (width >= 434px) {
+                    display: none;
+                }
+            }
+        }
+
+        .navmenu {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 24px 20px 32px 20px;
+            border-bottom: solid 1px var(--purple);
+            position: fixed;
+            top: 0;
+            width: 91%;
+            transform: translateY(-400px);
+            transition: var(--transition);
+	    	background-image: url(/images/noisenew.webp);
+            z-index: 99;
+
+            @media (width >= 434px) {
+                display: none;
+            }
+
+            > .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center ;
+            }
+
+            > .links {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                > div {
+                    width: 158px;
+                }
+            }
+
+            >.sans-box {
+                position: relative;
+                padding: 16px 0px;
+
+                @media (width > 431px) {
+                    display: none;
+                    position: relative;
+                }
+
+                >.sans {
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+</style>
+
+<script>
+    const closeNavMenu = document.getElementById('close-navmenu');
+    const openNavMenu = document.getElementById('burger-menu');
+    const NavMenu = document.getElementById('navmenu');
+    const pageBody = document.body;
+
+    openNavMenu.addEventListener('click', function() {
+        NavMenu.style.transform = 'translateY(0px)';
+        pageBody.style.overflow = 'hidden';
+    })
+
+    closeNavMenu.addEventListener('click', function() {
+        NavMenu.style.transform = 'translateY(-400px)';
+        pageBody.style.overflow = 'visible';
+
+    })
+</script>
+
+<script>
+    //@ts-nocheck
+    const sansBoxes = document.querySelectorAll('.sans-box');
+    
+    sansBoxes.forEach(sansBox => {
+        const sans = sansBox.querySelector('.sans');
+        const boxWidth = sansBox.clientWidth;
+        const gifWidth = sans.clientWidth;
+
+        let position = 0;
+        let direction = 1; // 1 for moving right, -1 for moving left
+        const speed = 2; // Adjust the speed as necessary
+
+        function animate() {
+            // Update position
+            position += speed * direction;
+
+            // Check boundaries and apply transform
+            if (position + gifWidth >= boxWidth) {
+                direction = -1; // Change direction to left
+                sans.style.transform = 'translateY(-50%) scaleX(-1)'; // Flip horizontally
+            } else if (position <= 0) {
+                direction = 1; // Change direction to right
+                sans.style.transform = 'translateY(-50%) scaleX(1)'; // Reset flip
+            }
+
+            // Apply new position
+            sans.style.left = position + 'px';
+
+            // Request next frame
+            requestAnimationFrame(animate);
+        }
+
+        // Start the animation
+        animate();
+    });
+</script>
+
+<script>
+    //@ts-nocheck
+    gsap.fromTo("nav > .box > *", { opacity: 0, y:-50 }, { stagger: .1, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
+    gsap.fromTo(".navmenu > .header > *", { opacity: 0, y:-50 }, { stagger: .1, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
+</script>

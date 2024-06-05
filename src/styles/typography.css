@@ -1,0 +1,43 @@
+:root {
+    --h1: 10rem;
+    --h2: 7.5rem;
+    --h3: 5rem;
+    --h4: 4rem;
+    --h5: 2.5rem;
+    --h6: 2rem;
+    --large-body: 1.25rem;
+    --small-body: .75rem;
+}
+
+@font-face {
+    font-family: Big-Shoulders-Display-Black;
+    src: url("../../fonts/BigShouldersDisplay-Black.ttf");
+}
+
+@font-face {
+    font-family: Overpass-Regular;
+    src: url("../../fonts/Overpass-Regular.ttf");
+}
+
+@font-face {
+    font-family: Overpass-ExtraBold;
+    src: url("../../fonts/Overpass-ExtraBold.ttf");
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: Big-Shoulders-Display-Black;
+    line-height: 98%;
+    text-transform: uppercase;
+    color: var(--mint);
+}
+
+p {
+    font-family: Overpass-Regular;
+    line-height: 125%;
+    color: var(--mint);
+}
+
+.bold {
+    font-family: Overpass-ExtraBold;
+    color: var(--mint);
+}

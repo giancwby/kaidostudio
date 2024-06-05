@@ -1,0 +1,28 @@
+:root {
+    --mint: #D4FEB3;
+    --blue : #1d229c;
+    --purple: #BF97FF;
+    --purple-haze: linear-gradient(#AC7DF9, #FFE2C1);
+    --haze: linear-gradient(#AC7DF9, #DFCFFA);
+
+    --transition: all ease 0.3s;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+margin: 0;
+padding: 0;
+font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}

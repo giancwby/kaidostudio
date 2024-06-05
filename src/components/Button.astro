@@ -1,0 +1,76 @@
+---
+//style imports
+import '../styles/global.css'
+import '../styles/typography.css'
+
+//props
+interface Props {
+    href: string;
+    text: string;
+    extraClass?: string;
+    divClass?: string;
+}
+
+const {
+    href,
+    text,
+    extraClass,
+    divClass
+
+} = Astro.props as Props;
+---
+
+<div class={divClass}>
+    <a href={href} class:list={["front", extraClass]}>
+        <p class="bold">{text}</p>
+    </a>
+    <a href={href} class:list={["behind", extraClass]}>
+        <p class="bold">{text}</p>
+    </a>
+</div>
+
+<style>
+    div {
+        position: relative;
+
+        > a {
+            padding: 12px 24px 8px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            border-radius: 8px;
+
+            > p {
+                color: var(--blue);
+                text-transform: uppercase;
+                font-size: var(--large-body);
+            }
+        }
+
+        > .front {
+            background: var(--haze);
+            position: relative;
+            z-index: 2;
+        }
+
+        > .behind {
+            background: var(--purple-haze);
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+
+        &:hover .front{
+            opacity: 0;
+        }
+
+        &:hover .behind {
+            box-shadow: 0px 5px 15px var(--purple);
+        }
+    }
+</style>
+

@@ -1,0 +1,40 @@
+---
+//style imports
+import '../styles/global.css'
+import '../styles/typography.css'
+
+// Props
+interface Props {
+    href: string;
+    text: string;
+    target?: string;
+}
+
+const {
+    href,
+    text,
+    target
+
+} = Astro.props as Props;
+---
+
+<a href={href} target={target}>
+    <p class="bold">{text}</p>
+</a>
+
+<style>
+    a {
+        > p {
+            color: var(--mint);
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: var(--large-body);
+
+            &:hover {
+                color: var(--purple);
+                transform: translateY(-3px);
+            }
+        }
+    }
+</style>
+

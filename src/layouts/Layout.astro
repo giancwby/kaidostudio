@@ -1,0 +1,72 @@
+---
+//props
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+//style imports
+import '../styles/global.css';
+
+//seo
+import { SEO } from "astro-seo";
+
+//components
+import Nav from '../components/Nav.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Kaido Studio | {title}</title>
+		<SEO
+			title={title}
+			description="Kaido Studio is a web design and development studio based in Manila, Philippines."
+			openGraph={{
+				basic: {
+				title: title,
+				type: "Portfolio",
+				image: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+				}
+			}}
+			extend={{
+				// extending the default link tags
+				link: [{ rel: "icon", href: "/favicon.svg" }],
+				// extending the default meta tags
+				meta: [
+				{
+					name: "twitter:image",
+					content: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+				},
+				{ name: "twitter:title", content: title },
+				{ name: "twitter:description", content: "Kaido Studio is a web design and development studio based in Manila, Philippines." },
+				],
+			}}
+		/>
+
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+	</head>
+	<body>
+		<Preloader/>
+		<Nav/>
+		<slot />
+		<CTA/>
+		<Footer/>
+	</body>
+</html>
+
+<style>
+	body {
+		background-image: url(/images/noisenew.webp);
+	}
+</style>

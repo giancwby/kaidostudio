@@ -1,0 +1,379 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import Featured from '../components/Featured.astro';
+---
+
+<Layout title="Portfolio">
+	<main>
+		<section class="hero">
+			<div class="box">
+				<div class="grid">
+					<img src="/icons/smirk.webp" alt="Smirk Emoji">
+					<h1>Heard You <br>Need a Website</h1>
+					<p class="body">Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.</p>
+				</div>
+				<img src="/images/reigen.webp" alt="Reigen">
+			</div>
+		</section>
+		<section class="services">
+			<div class="box">
+				<div class="right-col">
+					<h2>The Whole Package</h2>
+					<p class="body">Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
+					<div class="box">
+						<img src="/images/merchant.webp" alt="Merchant" class="merchant--small">
+						<div class="list">
+							<div class="item">
+								<img src="/icons/checkmark.svg" alt="checkmark">
+								<h3>Design</h3>
+								<img src="/gifs/gem.webp" alt="gem" class="gem">
+							</div>
+							<div class="item">
+								<img src="/icons/checkmark.svg" alt="checkmark">
+								<h3>Development</h3>
+								<img src="/gifs/gem.webp" alt="gem" class="gem">
+							</div>
+							<div class="item">
+								<img src="/icons/checkmark.svg" alt="checkmark">
+								<h3>Maintenance</h3>
+								<img src="/gifs/gem.webp" alt="gem" class="gem">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="left-col">
+					<div class="emojis">
+						<img src="/icons/onehundred.svg" alt="100" id="onehundred">
+						<img src="/icons/astonished.webp" alt="astonished face" id="astonished">
+					</div>
+					<img src="/images/merchant.webp" alt="Merchant" class="merchant--big">
+				</div>
+			</div>
+		</section>
+		<Featured/>
+	</main>
+</Layout>
+
+<style>
+	.hero {
+		> .box {
+			position: relative;
+			display: flex;
+			justify-content: center;
+
+			> img {
+				width: 50%;
+				position: absolute;
+				top: 0;
+				z-index: -1;
+				right: 5%;
+
+				@media (width > 431px) {
+					width: 250px;
+				}
+
+				@media (width > 1025px) {
+					width: 300px;
+					right: 25%;
+				}
+			}
+
+			> .grid {
+				padding: 0px 20px 40px 20px;
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: auto;
+				grid-template-areas:
+					"smirk"
+					"header"
+					"body";
+				gap: 24px;
+
+				@media (width >= 434px) {
+					grid-template-columns: 8fr 2fr;
+					grid-template-areas: 
+						"header header"
+						"body smirk";
+					padding: 80px 40px;
+				}
+
+				@media (width >= 1025px) {
+					grid-template-columns: auto 3fr;
+					grid-template-areas: 
+						"header smirk"
+						"body .";
+					padding: 80px;
+					width: 1280px;
+				}
+
+				>img {
+					width: 40%;
+					grid-area: smirk;
+
+					@media (width > 431px) {
+						width: 100%;
+					}
+
+					@media (width > 1025px) {
+						align-self: end;
+					}
+				}
+
+				>h1 {
+					font-size: var(--h3);
+					grid-area: header;
+
+					@media (width >= 434px) {
+						font-size: var(--h2);
+					}
+
+					@media (width > 1024px) {
+						font-size: var(--h1);
+					}
+
+					>br {
+						display: none;
+
+						@media (width > 434px) {
+							display: block;
+						}
+					}
+				}
+
+				>p {
+					grid-area: body;
+					font-size: var(--large-body);
+				}
+			}
+		}
+	}
+
+	.services {
+		@media (width > 1025px) {
+			display: flex;
+			justify-content: center;
+		}
+
+		>.box {
+			display: flex;
+			flex-direction: column;
+			gap: 40px;
+			padding: 40px 20px;
+
+			@media (width > 431px) {
+				padding: 40px;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 40px;
+			}
+
+			@media (width > 1024px) {
+				width: 1280px;
+				padding: 80px;
+				gap: 120px;
+			}
+
+			>.right-col {
+				display: flex;
+				flex-direction: column;
+				gap: 24px;
+				color: var(--mint);
+
+				@media (width > 431px) {
+					grid-column: 2/3;
+					align-self: center;
+					gap: 48px;
+				}
+
+				>h2 {
+					font-size: var(--h4);
+
+					@media (width > 431px) {
+						font-size: var(--h3);
+					}
+					
+					@media (width > 1024px) {
+						font-size: var(--h2);
+					}
+				}
+
+				>p {
+					font-size: var(--large-body);
+				}
+				
+				>.box {
+					display: flex;
+					align-items: center;
+					gap: 8px;
+
+					@media (width > 431px) {
+						gap: 48px;
+					}
+
+					>.merchant--small {
+						width: 80px;
+
+						@media (width > 431px) {
+							display: none;
+						}
+					}
+	
+					>.list {
+						display: flex;
+						flex-direction: column;
+						gap: 8px;
+	
+						>.item {
+							display: flex;
+							align-items: center;
+							gap: 8px;
+
+							@media (width > 431px) {
+								gap: 16px;
+							}
+
+							@media (width > 1024px) {
+								gap: 24px;
+							}
+	
+							>img {
+								width: 25px;
+
+								@media (width > 431px) {
+									width: 37px;
+								}
+
+								@media (width > 1024px) {
+									width: 58px;
+								}
+							}
+	
+							>h3 {
+								font-size: var(--h6);
+
+								@media (width > 431px) {
+									font-size: var(--h5);
+								}
+
+								@media (width > 1024px) {
+									font-size: var(--h3);
+								}
+							}
+
+							>.gem {
+								height: 20px;
+
+								@media (width > 431px) {
+									height: 25px;
+									transform: translate3d(-8px,-2px,0);
+								}
+
+								@media (width > 1024px) {
+									height: 60px;
+									transform: translate3d(-32px,-6px,0);
+									opacity: 0;
+									transition: var(--transition);
+								}
+							}
+
+							&:hover .gem {
+								opacity: 1;
+								transform: translate3d(-8px,-6px,0);
+							}
+						}
+					}
+				}
+
+			}
+
+			>.left-col {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+
+				@media (width > 431px) {
+					grid-column: 1/2;
+					grid-row: 1;
+					padding: 0px 20px;
+				}
+				
+				>.emojis {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					gap: 32px;
+					padding: 0px 24px;
+
+					>img {
+						width: 100%;
+
+						@media (width > 1024px) {
+							width: 160px;
+						}
+					}
+				}
+
+				>.merchant--big {
+					display: none;
+
+					@media (width > 431px) {
+						display: block;
+					}
+
+					@media (width > 431px) {
+						width: 400px;
+					}
+				}
+			}
+		}
+	}
+</style>
+
+<script>
+    //@ts-nocheck
+	const mobileQuery = window.matchMedia('(max-width: 431px)')
+	const desktopQuery = window.matchMedia('(min-width: 432px)')
+	
+    gsap.fromTo(".hero > .box > .grid > *", { opacity: 0, y:-50 }, { stagger: .15, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
+    gsap.fromTo(".hero > .box > img", { opacity: 0, y:-50 }, { stagger: .15, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
+
+	if (mobileQuery.matches) {
+		let servicesMobileTl = gsap.timeline({
+			scrollTrigger: {
+				trigger: ".services",
+				start: "top 80%",
+				end: "45% 50%",
+				scrub: true,
+				id: "scrub"
+			},
+			defaults: {ease:"expo.out"} 
+		})
+		servicesMobileTl.fromTo(".services > .box > .right-col > h2", {x:-100, opacity:0}, {x:0, opacity: 1})
+		servicesMobileTl.fromTo(".services > .box > .right-col > p", {x:-100, opacity:0}, {x:0, opacity: 1})
+		servicesMobileTl.fromTo(".merchant--small", {x:-200}, {x:0})
+		servicesMobileTl.fromTo(".list > *", { x:-150, scale:0.2, rotate:-30, opacity: 0},
+		{ rotate:0, scale: 1, stagger: .1, opacity: 1, x:0, y:0}, ">-10%");
+		servicesMobileTl.fromTo("#onehundred", {x:-100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1})
+		servicesMobileTl.fromTo("#astonished", {x:100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1}, "<")
+	}
+
+	else if (desktopQuery.matches) {
+		gsap.fromTo(".services > .box > .right-col > h2", {x:-100, opacity:0}, {x:0, opacity: 1, duration: 2})
+		gsap.fromTo(".services > .box > .right-col > p", {x:-100, opacity:0}, {x:0, opacity: 1, duration: 2})
+
+		let servicesMobileTl = gsap.timeline({
+			scrollTrigger: {
+				trigger: ".services",
+				start: "10% 60%",
+				end: "45% 50%",
+				id: "scrub"
+			},
+			defaults: {ease:"expo.out"} 
+		})
+		servicesMobileTl.fromTo(".merchant--big", {x:-200, opacity: 0}, {x:0, opacity: 1})
+		servicesMobileTl.fromTo(".list > *", { x:-650, scale:0.2, rotate:-30, y:-200, opacity: 0}, { rotate:0, scale: 1, stagger: .1, opacity: 1, x:0, y:0});
+		servicesMobileTl.fromTo("#onehundred", {x:-100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1})
+		servicesMobileTl.fromTo("#astonished", {x:100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1}, "<")
+	}
+
+</script>

@@ -1,0 +1,22 @@
+{
+  "name": "kaidostudio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev --host",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.5.18",
+    "astro-seo": "^0.8.3",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0"
+  },
+  "devDependencies": {
+    "postcss-nesting": "^12.1.5"
+  }
+}

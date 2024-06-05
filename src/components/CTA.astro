@@ -1,0 +1,169 @@
+---
+//components
+import Button from "./Button.astro";
+---
+
+<section id="cta">
+    <div class="box">
+        <img src="/gifs/ed.webp" alt="ed" class="ed">
+        <div class="copy">
+            <div class="header">
+                <img src="/images/jotaro.webp" alt="jotaro" id="jotaro">
+                <h2>Let's get <br>you online</h2>
+            </div>
+            <p class="body">Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
+            <Button href="mailto:gcaedo.gc@gmail.com" text="Send me an Email" divClass="cta-button"/>
+        </div>
+        <img src="/gifs/riku.webp" alt="riku" class="riku">
+    </div>
+</section>
+
+<style>
+    section {
+        @media (width > 1024px) {
+            display: flex;
+            justify-content: center;
+        }
+        >.box {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 80px 20px;
+            position: relative;
+
+            @media (width > 431px) {
+                padding: 120px 80px 80px 80px;
+            }
+
+            @media (width > 1024px) {
+                width: 1280px;
+                padding: 120px 80px 80px 80px;
+            }
+
+            >.ed {
+                width: 100%;
+                border: 1px solid var(--purple);
+
+                @media (width > 431px) {
+                    position: absolute;
+                    width: 350px;
+                    top: 80px;
+                    left: 40px;
+                }
+
+                @media (width > 1024px) {
+                    left: 120px;
+                }
+            }
+
+            >.riku {
+                width: 100%;
+                border: 1px solid var(--purple);
+
+                @media (width > 431px) {
+                    position: absolute;
+                    width: 360px;
+                    top: 120px;
+                    right: 40px;
+                }
+
+                @media (width > 1024px) {
+                    right: 120px;
+                }
+            }
+
+            >.copy {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+
+                @media (width > 431px) {
+                    gap: 40px;
+                }
+                
+                >.header {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    >img {
+                        width: 80%;
+                        transform: translate3d(-8px, 16px, 0);
+                        z-index: 1;
+
+                        @media (width > 431px) {
+                            transform: translate3d(-40px, 16px, 0);
+                            width: 340px;
+                        }
+                    }
+
+                    >h2 {
+                        font-size: var(--h3);
+                        text-align: center;
+                        z-index: 2;
+
+                        @media (width > 431px) {
+                            font-size: var(--h2);
+                        }
+
+                        >br {
+                            @media (width > 1024px) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                >p {
+                    font-size: var(--large-body);
+                    text-align: center;
+
+                    @media (width > 1024px) {
+                        width: 600px;
+                    }
+                }
+            }
+        }
+    }
+</style>
+
+<script>
+    //@ts-nocheck
+	const mobileQuery = window.matchMedia('(max-width: 431px)')
+
+    if (mobileQuery.matches) {
+        let ctaTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#cta",
+                start: "30% 80%",
+                end: "65% 50%",
+                scrub: true,
+                id: "scrub"
+            },
+            defaults: {ease:"expo.out"} 
+        })
+    
+        ctaTl.fromTo("#jotaro", {x:-200, opacity:0}, {x:0, opacity: 1})
+        ctaTl.fromTo("#cta > .box > .copy > .header > h2", {x:-100, opacity:0}, {x:0, opacity: 1})
+        ctaTl.fromTo("#cta > .box > .copy > p", {x:-100, opacity:0}, {x:0, opacity: 1})
+        ctaTl.fromTo("#cta > .box > .copy > .cta-button", {x:-100, opacity:0}, {x:0, opacity: 1})
+    }
+    
+    else {
+        let ctaTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#cta",
+                start: "30% 80%",
+                end: "70% 50%"
+            }
+        })
+
+        ctaTl.fromTo(".ed", {x:-300, opacity:0}, {x:0, opacity: 1, duration: .5, ease: "power3.out"})
+        ctaTl.fromTo(".riku", {x:-300, opacity:0}, {x:0, opacity: 1, duration: .5, ease: "power3.out"}, "<")
+        ctaTl.fromTo("#jotaro", {scale:0, opacity:0}, {scale: 1, opacity: 1, ease: "power4.out", duration: .5})
+        ctaTl.fromTo("#cta > .box > .copy > .header > h2", {x:-100, opacity:0}, {x:0, opacity: 1, ease: "power4.out", duration: .5}, "<")
+        ctaTl.fromTo("#cta > .box > .copy > p", {x:-100, opacity:0}, {x:0, opacity: 1})
+        ctaTl.fromTo("#cta > .box > .copy > .cta-button", {x:-100, opacity:0}, {x:0, opacity: 1}, "<")
+    }
+</script>

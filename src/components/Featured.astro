@@ -1,0 +1,93 @@
+---
+const allProjects = await Astro.glob('../pages/projects/*.md')
+
+import Button from "./Button.astro"
+---
+
+<section>
+    <div class="box">
+        <h2>I build <br>all kinds <br>of sites</h2>
+        <p class="body">Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod </p>
+        <div class="gallery">
+            {allProjects.map((project) =>
+                <a href={project.url}>
+                    <video src={project.frontmatter.video.url} autoplay muted loop playsinline></video>
+                </a>
+            )}
+        </div>
+        <Button href="work" text="Wanna See More?"/>
+    </div>
+</section>
+
+<style>
+    section {
+        @media (width > 1024px) {
+            display: flex;
+            justify-content: center;
+        }
+
+        >.box {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 40px 20px;
+            align-items: center;
+
+            @media (width > 431px) {
+                padding: 80px 80px 160px 80px;
+                gap: 40px;
+            }
+
+            @media (width > 1024px) {
+                padding: 80px;
+                width: 1280px;
+            }
+
+            >h2 {
+                font-size: var(--h4);
+                text-align: center;
+
+                @media (width > 431px) {
+                    font-size: var(--h3);
+                    width: 500px;
+                }
+
+                @media (width > 1024px) {
+                    width: 100%;
+                }
+
+                > br {
+                    @media (width > 431px) {
+                        display: none;
+                    }
+                }
+            }
+
+            >p {
+                font-size: var(--large);
+                text-align: center;
+            }
+
+            >.gallery {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                @media (width > 431px) {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @media (width > 1024px) {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+                > a > video {
+                    width: 100%;
+                    border: 1px solid var(--purple);
+                }
+            }
+        }
+    }
+</style>
