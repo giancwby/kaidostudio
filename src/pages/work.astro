@@ -1,6 +1,7 @@
 ---
 //components
 import Layout from "../layouts/Layout.astro";
+import Gallery from "../components/Gallery.astro";
 
 const allProjects = await Astro.glob('../pages/projects/*.md')
 ---
@@ -10,13 +11,7 @@ const allProjects = await Astro.glob('../pages/projects/*.md')
         <div class="box">
             <h1>This could <br>be you</h1>
             <p class="body">Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod </p>
-            <div class="grid">
-                {allProjects.map((project) =>
-                    <a href={project.url}>
-                        <video src={project.frontmatter.video.url} autoplay muted loop playsinline></video>
-                    </a>
-                )}
-            </div>
+            <Gallery/>
         </div>
     </section>
 </Layout>
@@ -67,27 +62,6 @@ const allProjects = await Astro.glob('../pages/projects/*.md')
 
                 @media (width > 1024px) {
                     width: 600px;
-                }
-            }
-
-            >.grid {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 16px;
-
-                @media (width > 431px) {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-
-                @media (width > 1024px) {
-                    grid-template-columns: repeat(3, 1fr);
-                }
-
-                >a {
-                    >video {
-                        width: 100%;
-                        border: 1px solid var(--purple);
-                    }
                 }
             }
         }

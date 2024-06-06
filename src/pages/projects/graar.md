@@ -1,10 +1,12 @@
 ---
 title: 'GRAAR'
 pubDate: 2024-06-04
-description: 'This is the second post of my new Astro blog.'
-image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png'
-    alt: 'The full Astro logo.'
+description: 'Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.'
 video:
-    url: '/videos/graar--desktop.mp4'
+    desktopUrl: '/videos/graar--desktop.webm'
+    mobileUrl: '/videos/graar--mobile.webm'
+category: 'Portfolio'
+client: 'GRAAR'
+industry: 'Architecture'
+websiteUrl: 'https://graar.ph'
 ---

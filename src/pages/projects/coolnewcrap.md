@@ -2,15 +2,12 @@
 layout: '../../layouts/ProjectLayout.astro'
 title: 'Cool New Crap'
 pubDate: 2024-06-04
-description: 'This is the first post of my new Astro blog.'
-image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png'
-    alt: 'The full Astro logo.'
+description: 'Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.'
 video:
-    url: '/videos/cnc--desktop.mp4'
-vide0Mobile:
-    url: 'videos/cnc--mobile.mp4'    
+    desktopUrl: '/videos/cnc--desktop.webm'
+    mobileUrl: '/videos/cnc--mobile.webm'
 category: 'Portfolio'
 client: 'GRAAR'
-industry: 'Architecture'
+industry: 'CNC Furniture'
+websiteUrl: 'https://graar.ph/cnc/'
 ---

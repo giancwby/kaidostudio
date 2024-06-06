@@ -80,8 +80,8 @@ import Logo from "./Logo.astro";
             defaults: {ease:"expo.out"} 
         })
         tl.fromTo("#solaire", {y: 50, opacity: 0}, {y:0, opacity: 1})
-        tl.fromTo(".footer-logo", {x: -100, opacity: 0}, {x:0, opacity: 1})
-        tl.fromTo("footer > .box > .bottom > .links > *", {x: -100, opacity: 0}, {x:0, opacity: 1})
+        tl.fromTo(".footer-logo", {x: -100, opacity: 0}, {x:0, opacity: 1, duration: 1.5}, "<")
+        tl.fromTo("footer > .box > .bottom > .links > *", {x: -100, opacity: 0}, {x:0, opacity: 1, duration: 1.5}, "<")
     }
 
     else {

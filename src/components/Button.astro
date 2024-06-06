@@ -9,22 +9,24 @@ interface Props {
     text: string;
     extraClass?: string;
     divClass?: string;
+    target?: string;
 }
 
 const {
     href,
     text,
     extraClass,
-    divClass
+    divClass,
+    target
 
 } = Astro.props as Props;
 ---
 
 <div class={divClass}>
-    <a href={href} class:list={["front", extraClass]}>
+    <a href={href} class:list={["front", extraClass]} target={target}>
         <p class="bold">{text}</p>
     </a>
-    <a href={href} class:list={["behind", extraClass]}>
+    <a href={href} class:list={["behind", extraClass]} target={target}>
         <p class="bold">{text}</p>
     </a>
 </div>
@@ -45,6 +47,7 @@ const {
                 color: var(--blue);
                 text-transform: uppercase;
                 font-size: var(--large-body);
+                text-align: center;
             }
         }
 

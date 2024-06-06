@@ -1,10 +1,12 @@
 ---
 title: 'upace'
 pubDate: 2024-06-05
-description: 'This is the sixth post of my new Astro blog.'
-image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png'
-    alt: 'The full Astro logo.'
+description: 'Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.'
 video:
-    url: '/videos/upace--desktop.mp4'
+    desktopUrl: '/videos/upace--desktop.webm'
+    mobileUrl: '/videos/upace--mobile.webm'
+category: 'Business Website'
+client: 'upace'
+industry: 'Recreation Center Management'
+websiteUrl: 'https://upaceapp.com'
 ---

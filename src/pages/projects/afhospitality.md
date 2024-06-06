@@ -1,13 +1,13 @@
 ---
+layout: '../../layouts/ProjectLayout.astro'
 title: 'AF Hospitality'
 pubDate: 2024-06-04
-description: 'This is the third post of my new Astro blog.'
-image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png'
-    alt: 'The full Astro logo.'
+description: 'Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.'
 video:
-    url: '/videos/afh--desktop.mp4'
-category: 'Portfolio'
+    desktopUrl: '/videos/afh--desktop.webm'
+    mobileUrl: '/videos/afh--mobile.webm'
+category: 'Business Website'
 client: 'AF Hospitality'
-industry: 'Restaurants'
+industry: 'Hospitality'
+websiteUrl: 'https://afhospitality.com'
 ---

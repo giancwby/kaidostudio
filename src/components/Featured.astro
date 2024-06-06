@@ -11,7 +11,7 @@ import Button from "./Button.astro"
         <div class="gallery">
             {allProjects.map((project) =>
                 <a href={project.url}>
-                    <video src={project.frontmatter.video.url} autoplay muted loop playsinline></video>
+                    <video src={project.frontmatter.video.desktopUrl} autoplay muted loop playsinline></video>
                 </a>
             )}
         </div>

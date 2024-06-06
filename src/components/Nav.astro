@@ -11,12 +11,12 @@ import '../styles/global.css'
 <nav>
     <div class="box">
         <Logo/>
-        <img src="/gifs/burger-menu.gif" alt="burger menu" class="burger-menu" id="burger-menu">
+        <video src="/gifs/burger-menu.webm" class="burger-menu" id="burger-menu" autoplay muted loop playsinline></video>
         <div class="sans-box">
             <img src="/gifs/sans-walking.gif" alt="Sans Walking" width="30" height="53" class="sans">
         </div>
         <div class="links">
-            <Link href='work' text='Work'/>
+            <Link href='/work' text='Work'/>
             <Button href='mailto:gcaedo.gc@gmail.com' text='Let&#39s Talk'/>
         </div>
     </div>
@@ -26,7 +26,7 @@ import '../styles/global.css'
             <img src="/icons/close-navmenu.webp" alt="Close Nav Menu" width="33" height="42" class="close-navmenu" id="close-navmenu">
         </div>
         <div class="links">
-            <Link href='work' text='Work'/>
+            <Link href='/work' text='Work'/>
             <Button href='mailto:gcaedo.gc@gmail.com' text='Let&#39s Talk' extraClass='navDiv'/>
         </div>
         <div class="sans-box">
@@ -120,7 +120,7 @@ import '../styles/global.css'
             width: 91%;
             transform: translateY(-400px);
             transition: var(--transition);
-	    	background-image: url(/images/noisenew.webp);
+	    	background-image: url(/images/noise.webp);
             z-index: 99;
 
             @media (width >= 434px) {
@@ -136,6 +136,7 @@ import '../styles/global.css'
             > .links {
                 display: flex;
                 flex-direction: column;
+                align-items: start;
                 gap: 16px;
 
                 > div {

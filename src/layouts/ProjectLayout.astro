@@ -1,7 +1,9 @@
 ---
 import Layout from "./Layout.astro";
 import Button from "../components/Button.astro";
-import Featured from "../components/Featured.astro";
+import Gallery from "../components/Gallery.astro";
+
+const allProjects = await Astro.glob('../pages/projects/*.md')
 
 const {frontmatter} = Astro.props
 ---
@@ -9,35 +11,52 @@ const {frontmatter} = Astro.props
 <Layout title={frontmatter.title}>
     <section class="project">
         <div class="box">
-            <div class="copy">
-                <div class="left-col">
-                    <h1>{frontmatter.title}</h1>
-                    <p class="body">{frontmatter.description}</p>
-                    <Button href="/" text="See the Real Thing"/>
+            <h1>{frontmatter.title}</h1>
+            <p>{frontmatter.description}</p>
+            <video src={frontmatter.video.desktopUrl} autoplay loop muted playsinline class="video--desktop"></video>
+            <div class="list">
+                <div class="item">
+                    <p class="bold">Category</p>
+                    <p>{frontmatter.category}</p>
                 </div>
-                <div class="list">
-                    <div class="item">
-                        <p>Category</p>
-                        <p>{frontmatter.category}</p>
-                    </div>
-                    <div class="item">
-                        <p>Client</p>
-                        <p>{frontmatter.client}</p>
-                    </div>
-                    <div class="item">
-                        <p>Industry</p>
-                        <p>{frontmatter.industry}</p>
-                    </div>
+                <div class="item">
+                    <p class="bold">Client</p>
+                    <p>{frontmatter.client}</p>
+                </div>
+                <div class="item">
+                    <p class="bold">Industry</p>
+                    <p>{frontmatter.industry}</p>
                 </div>
             </div>
-            <div class="preview">
-                <video src={frontmatter.video.url} autoplay loop muted playsinline></video>
-            </div>
+            <video src={frontmatter.video.mobileUrl} autoplay loop muted playsinline class="video--mobile"></video>
+            <Button href={frontmatter.websiteUrl} text="Visit Site" divClass="project-button"/ target="_blank">
         </div>
     </section>
-    <Featured/>
+    <section class="gallery">
+        <div class="box">
+            <Gallery/>
+        </div>
+    </section>
 </Layout>
 
+<style is:global>
+    .project-button {
+        grid-row: 5/6;
+        grid-column: 1/2;
+        align-self: end;
+
+        @media (width > 431px) {
+            grid-column: 2/3;
+            grid-row: 4/5;
+            justify-self: start;
+        }
+    
+        @media (width > 1024px) {
+
+        }
+    }
+
+</style>
 
 <style>
     .project {
@@ -47,60 +66,143 @@ const {frontmatter} = Astro.props
         }
 
         >.box {
-            display: flex;
-            flex-direction: column;
-            padding: 40px 20px 20px 24px;
-            gap: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 40px 20px 80px 20px;
+            row-gap: 40px;
+            column-gap: 40px;
 
-            >.copy {
-                display: flex;
-                flex-direction: column;
-                gap: 40px;
+            @media (width > 431px) {
+                grid-template-columns: auto 421px 40px 115px auto;
+                column-gap: 0px;
+                padding: 80px 40px 80px 40px;
+            }
 
-                >.left-col {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 40px;
+            @media (width > 1024px) {
+                width: 1280px;
+                padding: 80px;
+                grid-template-columns: auto 461px 66px 127px auto;
+            }
+            
+            >h1 {
+                font-size: var(--h4);
+                grid-column: 1/3;
+                grid-row: 1/2;
 
-                    >h1 {
-                        font-size: var(--h4);
-                    }
-
-                    >p {
-                        font-size: var(--large);
-                    }
+                @media (width > 431px) {
+                    grid-column: 1/6;
+                    grid-row: 2/3;
+                    font-size: var(--h2);
+                    text-align: center;
                 }
 
-                >.list {
+                @media (width > 1024px) {
+
+                }
+            }
+
+            >p {
+                font-size: var(--large-body);
+                grid-column: 1/3;
+                grid-row: 2/3;
+
+                @media (width > 431px) {
+                    grid-column: 2/3;
+                    grid-row: 3/4;
+                    width: 90%;
+
+                }
+
+                @media (width > 1024px) {
+
+                }
+            }
+    
+            >video {
+                width: 100%;
+                border: 1px solid var(--purple);
+            }
+
+            >.video--desktop {
+                grid-row: 3/4;
+                grid-column: 1/3;
+
+                @media (width > 431px) {
+                    grid-column: 2/3;
+                    grid-row: 1/2;
+
+                }
+
+                @media (width > 1024px) {
+
+                }
+            }
+
+            >.list {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                grid-row: 4/5;
+                grid-column: 1/2;
+
+                @media (width > 431px) {
+                    grid-column: 4/5;
+                    grid-row: 3/5;
+
+                }
+
+                @media (width > 1024px) {
+
+                }
+
+                >.item {
                     display: flex;
                     flex-direction: column;
-                    gap: 24px;
+                    gap: 4px;
 
-                    >.item {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 4px;
+                    >p:nth-child(1) {
+                        font-size: var(--small-body);
+                        text-transform: uppercase;
+                    }
 
-                        >p:nth:nth-child(1) {
-                            font-size: var(--small);
-                            text-transform: uppercase;
-                        }
-
-                        >p:nth-child(2) {
-                            font-size: var(--large);
-                        }
+                    >p:nth-child(2) {
+                        font-size: var(--large-body);
                     }
                 }
             }
 
-            >.preview {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
+            >.video--mobile {
+                grid-row: 4/6;
+                grid-column: 2/3;
 
-                >video {
-                    width: 100%;
+                @media (width > 431px) {
+                    grid-column: 4/5;
+                    grid-row: 1/2;
+
                 }
+
+                @media (width > 1024px) {
+
+                }
+            }
+        }
+    }
+
+    .gallery {
+        @media (width > 1024px) {
+            display: flex;
+            justify-content: center;
+        }
+
+        >.box {
+            padding: 40px 20px 80px 20px;
+    
+            @media (width > 431px) {
+                padding: 80px 40px 160px 40px;
+            }
+    
+            @media (width > 1024px) {
+                width: 1280px;
             }
         }
     }

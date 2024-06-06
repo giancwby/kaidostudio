@@ -1,10 +1,12 @@
 ---
 title: 'Courtly'
 pubDate: 2024-06-05
-description: 'This is the fourth post of my new Astro blog.'
-image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png'
-    alt: 'The full Astro logo.'
+description: 'Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.'
 video:
-    url: '/videos/courtly--desktop.mp4'
+    desktopUrl: '/videos/courtly--desktop.webm'
+    mobileUrl: '/videos/courtly--mobile.webm'
+category: 'Business Website'
+client: 'Courtly'
+industry: 'Online Weddings'
+websiteUrl: 'https://courtly.com'
 ---

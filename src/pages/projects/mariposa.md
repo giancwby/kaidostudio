@@ -1,10 +1,12 @@
 ---
 title: 'Mariposa Mews'
 pubDate: 2024-06-05
-description: 'This is the fifth post of my new Astro blog.'
-image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png'
-    alt: 'The full Astro logo.'
+description: 'Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.'
 video:
-    url: '/videos/mariposa--desktop.mp4'
+    desktopUrl: '/videos/mariposa--desktop.webm'
+    mobileUrl: '/videos/mariposa--mobile.webm'
+category: 'Business Website'
+client: 'Mariposa Mews'
+industry: 'Sustainable Real Estate'
+websiteUrl: 'https://www.mariposamews.com.ph'
 ---
