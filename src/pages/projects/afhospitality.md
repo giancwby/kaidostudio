@@ -7,4 +7,7 @@ image:
     alt: 'The full Astro logo.'
 video:
     url: '/videos/afh--desktop.mp4'
+category: 'Portfolio'
+client: 'AF Hospitality'
+industry: 'Restaurants'
 ---

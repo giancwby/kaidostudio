@@ -1,0 +1,95 @@
+---
+//components
+import Layout from "../layouts/Layout.astro";
+
+const allProjects = await Astro.glob('../pages/projects/*.md')
+---
+
+<Layout title="Portfolio">
+    <section>
+        <div class="box">
+            <h1>This could <br>be you</h1>
+            <p class="body">Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod </p>
+            <div class="grid">
+                {allProjects.map((project) =>
+                    <a href={project.url}>
+                        <video src={project.frontmatter.video.url} autoplay muted loop playsinline></video>
+                    </a>
+                )}
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    section {
+        @media (width > 1024px) {
+            display: flex;
+            justify-content: center;
+        }
+
+        >.box {
+            display: flex;
+            flex-direction: column;
+            padding: 40px 20px;
+            gap: 24px;
+            align-items: center;
+
+            @media (width > 431px) {
+                padding: 80px 40px 80px 40px;
+                gap: 40px;
+            }
+
+            @media (width > 1024px) {
+                padding: 80px;
+                width: 1280px;
+            }
+            
+            >h1 {
+                font-size: var(--h4);
+                text-align: center;
+                
+                @media (width > 431px) {
+                    font-size: var(--h2);
+                    width: 100%;
+                }
+
+                >br {
+                    @media (width > 1024px) {
+                        display: none;
+                    }
+                }
+            }
+
+            >p {
+                font-size: var(--large);
+                text-align: center;
+
+                @media (width > 1024px) {
+                    width: 600px;
+                }
+            }
+
+            >.grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 16px;
+
+                @media (width > 431px) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @media (width > 1024px) {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+                >a {
+                    >video {
+                        width: 100%;
+                        border: 1px solid var(--purple);
+                    }
+                }
+            }
+        }
+    }
+</style>

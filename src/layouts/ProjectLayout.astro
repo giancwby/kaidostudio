@@ -1,0 +1,107 @@
+---
+import Layout from "./Layout.astro";
+import Button from "../components/Button.astro";
+import Featured from "../components/Featured.astro";
+
+const {frontmatter} = Astro.props
+---
+
+<Layout title={frontmatter.title}>
+    <section class="project">
+        <div class="box">
+            <div class="copy">
+                <div class="left-col">
+                    <h1>{frontmatter.title}</h1>
+                    <p class="body">{frontmatter.description}</p>
+                    <Button href="/" text="See the Real Thing"/>
+                </div>
+                <div class="list">
+                    <div class="item">
+                        <p>Category</p>
+                        <p>{frontmatter.category}</p>
+                    </div>
+                    <div class="item">
+                        <p>Client</p>
+                        <p>{frontmatter.client}</p>
+                    </div>
+                    <div class="item">
+                        <p>Industry</p>
+                        <p>{frontmatter.industry}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="preview">
+                <video src={frontmatter.video.url} autoplay loop muted playsinline></video>
+            </div>
+        </div>
+    </section>
+    <Featured/>
+</Layout>
+
+
+<style>
+    .project {
+        @media (width > 1024px) {
+            display: flex;
+            justify-content: center;
+        }
+
+        >.box {
+            display: flex;
+            flex-direction: column;
+            padding: 40px 20px 20px 24px;
+            gap: 40px;
+
+            >.copy {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+
+                >.left-col {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 40px;
+
+                    >h1 {
+                        font-size: var(--h4);
+                    }
+
+                    >p {
+                        font-size: var(--large);
+                    }
+                }
+
+                >.list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+
+                    >.item {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+
+                        >p:nth:nth-child(1) {
+                            font-size: var(--small);
+                            text-transform: uppercase;
+                        }
+
+                        >p:nth-child(2) {
+                            font-size: var(--large);
+                        }
+                    }
+                }
+            }
+
+            >.preview {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                >video {
+                    width: 100%;
+                }
+            }
+        }
+    }
+</style>
