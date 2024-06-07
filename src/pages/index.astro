@@ -370,7 +370,7 @@ import Featured from '../components/Featured.astro';
 			defaults: {ease:"expo.out"} 
 		})
 		servicesMobileTl.fromTo(".merchant--big", {x:-200, opacity: 0}, {x:0, opacity: 1})
-		servicesMobileTl.fromTo(".list > *", { x:-650, scale:0.2, rotate:-30, y:-200, opacity: 0}, { rotate:0, scale: 1, stagger: .1, opacity: 1, x:0, y:0});
+		servicesMobileTl.fromTo(".list > *", { x:-650, scale:0.2, rotate:-30, y:-200, opacity: 0}, { rotate:0, scale: 1, stagger: .1, opacity: 1, x:0, y:0}, "<.2");
 		servicesMobileTl.fromTo("#onehundred", {x:-100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1})
 		servicesMobileTl.fromTo("#astonished", {x:100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1}, "<")
 	}

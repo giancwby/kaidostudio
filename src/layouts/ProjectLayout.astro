@@ -3,13 +3,11 @@ import Layout from "./Layout.astro";
 import Button from "../components/Button.astro";
 import Gallery from "../components/Gallery.astro";
 
-const allProjects = await Astro.glob('../pages/projects/*.md')
-
 const {frontmatter} = Astro.props
 ---
 
 <Layout title={frontmatter.title}>
-    <section class="project">
+    <section class="project" id="project">
         <div class="box">
             <h1>{frontmatter.title}</h1>
             <p>{frontmatter.description}</p>
@@ -95,10 +93,6 @@ const {frontmatter} = Astro.props
                     font-size: var(--h2);
                     text-align: center;
                 }
-
-                @media (width > 1024px) {
-
-                }
             }
 
             >p {
@@ -110,10 +104,6 @@ const {frontmatter} = Astro.props
                     grid-column: 2/3;
                     grid-row: 3/4;
                     width: 90%;
-
-                }
-
-                @media (width > 1024px) {
 
                 }
             }
@@ -132,10 +122,6 @@ const {frontmatter} = Astro.props
                     grid-row: 1/2;
 
                 }
-
-                @media (width > 1024px) {
-
-                }
             }
 
             >.list {
@@ -148,10 +134,6 @@ const {frontmatter} = Astro.props
                 @media (width > 431px) {
                     grid-column: 4/5;
                     grid-row: 3/5;
-
-                }
-
-                @media (width > 1024px) {
 
                 }
 
@@ -180,10 +162,6 @@ const {frontmatter} = Astro.props
                     grid-row: 1/2;
 
                 }
-
-                @media (width > 1024px) {
-
-                }
             }
         }
     }
@@ -207,3 +185,16 @@ const {frontmatter} = Astro.props
         }
     }
 </style>
+
+<script>
+    //@ts-nocheck
+    const mobileQuery = window.matchMedia('(max-width: 431px)')
+
+    if (mobileQuery.matches) {
+        gsap.fromTo('#project > .box > *', {y:-200, opacity: 0}, {y:0, opacity: 1, duration: 3, ease:"expo.out"})
+    }
+
+    else {
+        gsap.fromTo('#project > .box > *', {y:-200, opacity: 0}, {y:0, opacity: 1, duration: 2, ease:"expo.out"})
+    }
+</script>

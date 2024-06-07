@@ -2,7 +2,7 @@
 const allProjects = await Astro.glob('../pages/projects/*.md')
 ---
 
-<div class="grid">
+<div class="grid" id="gallery">
     {allProjects.map((project) =>
         <a href={project.url}>
             <video src={project.frontmatter.video.desktopUrl} autoplay muted loop playsinline></video>
@@ -25,6 +25,12 @@ const allProjects = await Astro.glob('../pages/projects/*.md')
         }
 
         >a {
+            transition: var(--transition);
+
+            &:hover {
+                transform: translateY(-5px) !important;
+            }
+
             >video {
                 width: 100%;
                 border: 1px solid var(--purple);
@@ -32,3 +38,36 @@ const allProjects = await Astro.glob('../pages/projects/*.md')
         }
     }
 </style>
+
+<script>
+    //@ts-nocheck
+    const mobileQuery = window.matchMedia('(max-width: 431px)')
+
+    if (mobileQuery.matches) {
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#gallery",
+                start: "top bottom",
+                end: "bottom bottom",
+                scrub: true,
+                id: "scrub"
+            },
+            defaults: {ease:"expo.out"} 
+        })
+
+        tl.fromTo('#gallery > a', {x:-200, opacity: 0}, {x:0, opacity: 1, stagger: .5})
+    }
+
+    else {
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#gallery",
+                start: "10% 80%",
+                end: "70% 50%"
+            },
+            defaults: {ease:"expo.out"} 
+        })
+        
+        tl.fromTo('#gallery > a', {y:-100, opacity: 0}, {y:0, opacity: 1, duration: 2})
+    }
+</script>

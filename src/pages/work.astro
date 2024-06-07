@@ -7,7 +7,7 @@ const allProjects = await Astro.glob('../pages/projects/*.md')
 ---
 
 <Layout title="Portfolio">
-    <section>
+    <section id="portfolio">
         <div class="box">
             <h1>This could <br>be you</h1>
             <p class="body">Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod </p>
@@ -67,3 +67,9 @@ const allProjects = await Astro.glob('../pages/projects/*.md')
         }
     }
 </style>
+
+<script>
+    //@ts-nocheck
+    gsap.fromTo('#portfolio > .box > h1', {y: -100, opacity: 0}, {y:0, opacity: 1, delay: .5, duration: 2, ease: 'expo.out'})
+    gsap.fromTo('#portfolio > .box > p', {y: -100, opacity: 0}, {y:0, opacity: 1, delay: .5, duration: 2, ease: 'expo.out'})
+</script>

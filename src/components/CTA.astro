@@ -144,7 +144,7 @@ import Button from "./Button.astro";
             defaults: {ease:"expo.out"} 
         })
     
-        ctaTl.fromTo("#jotaro", {x:-200, opacity:0}, {x:0, opacity: 1})
+        ctaTl.fromTo("#jotaro", {scale:0, y:50, opacity:0}, {scale:1, y:0, opacity: 1})
         ctaTl.fromTo("#cta > .box > .copy > .header > h2", {x:-100, opacity:0}, {x:0, opacity: 1})
         ctaTl.fromTo("#cta > .box > .copy > p", {x:-100, opacity:0}, {x:0, opacity: 1})
         ctaTl.fromTo("#cta > .box > .copy > .cta-button", {x:-100, opacity:0}, {x:0, opacity: 1})
@@ -161,9 +161,9 @@ import Button from "./Button.astro";
 
         ctaTl.fromTo(".ed", {x:-300, opacity:0}, {x:0, opacity: 1, duration: .5, ease: "power3.out"})
         ctaTl.fromTo(".riku", {x:-300, opacity:0}, {x:0, opacity: 1, duration: .5, ease: "power3.out"}, "<")
-        ctaTl.fromTo("#jotaro", {scale:0, opacity:0}, {scale: 1, opacity: 1, ease: "power4.out", duration: .5})
-        ctaTl.fromTo("#cta > .box > .copy > .header > h2", {x:-100, opacity:0}, {x:0, opacity: 1, ease: "power4.out", duration: .5}, "<")
-        ctaTl.fromTo("#cta > .box > .copy > p", {x:-100, opacity:0}, {x:0, opacity: 1})
+        ctaTl.fromTo("#jotaro", {scale:0, opacity:0}, {scale: 1, opacity: 1, ease: "power4.out", duration: 1}, "<.3")
+        ctaTl.fromTo("#cta > .box > .copy > .header > h2", {x:-100, opacity:0}, {x:0, opacity: 1, ease: "power4.out", duration: 1}, "<")
+        ctaTl.fromTo("#cta > .box > .copy > p", {x:-100, opacity:0}, {x:0, opacity: 1}, "<")
         ctaTl.fromTo("#cta > .box > .copy > .cta-button", {x:-100, opacity:0}, {x:0, opacity: 1}, "<")
     }
 </script>

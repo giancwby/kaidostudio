@@ -4,7 +4,7 @@ const allProjects = await Astro.glob('../pages/projects/*.md')
 import Button from "./Button.astro"
 ---
 
-<section>
+<section id="featured">
     <div class="box">
         <h2>I build <br>all kinds <br>of sites</h2>
         <p class="body">Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod </p>
@@ -15,7 +15,7 @@ import Button from "./Button.astro"
                 </a>
             )}
         </div>
-        <Button href="work" text="Wanna See More?"/>
+        <Button href="work" text="Wanna See More?" divClass="featured-button"/>
     </div>
 </section>
 
@@ -83,11 +83,58 @@ import Button from "./Button.astro"
                     grid-template-columns: repeat(3, 1fr);
                 }
 
-                > a > video {
-                    width: 100%;
-                    border: 1px solid var(--purple);
+                > a  {
+                    transition: var(--transition);
+
+                    &:hover {
+                        transform: translateY(-5px) !important;
+                    }
+
+                    > video {
+                        width: 100%;
+                        border: 1px solid var(--purple);
+                    }
                 }
             }
         }
     }
 </style>
+
+<script>
+    //@ts-nocheck
+	const mobileQuery = window.matchMedia('(max-width: 431px)')
+
+    if (mobileQuery.matches) {
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#featured",
+                start: "top 80%",
+                end: "80% 50%",
+                scrub: true,
+                id: "scrub"
+            },
+            defaults: {ease:"expo.out"} 
+        })
+
+        tl.fromTo('#featured > .box > h2', {x:-200, opacity: 0}, {x:0, opacity: 1})
+        tl.fromTo('#featured > .box > p', {x:-200, opacity: 0}, {x:0, opacity: 1})
+        tl.fromTo('#featured > .box > .gallery > *', {x:-200, opacity: 0}, {x:0, opacity: 1, stagger:.5})
+        tl.fromTo('#featured > .box > .featured-button', {x:-200, opacity: 0}, {x:0, opacity: 1})
+    }
+
+    else {
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#featured",
+                start: "10% 80%",
+                end: "70% 50%"
+            },
+            defaults: {ease:"expo.out"} 
+        })
+
+        tl.fromTo('#featured > .box > h2', {x:-200, opacity: 0}, {x:0, opacity: 1})
+        tl.fromTo('#featured > .box > p', {x:-200, opacity: 0}, {x:0, opacity: 1}, "<")
+        tl.fromTo('#featured > .box > .gallery > *', {y:200, opacity: 0}, {y:0, opacity: 1}, "<")
+        tl.fromTo('#featured > .box > .featured-button', {x:-200, opacity: 0}, {x:0, opacity: 1}, "<")
+    }
+</script>
