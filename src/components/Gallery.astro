@@ -1,15 +1,37 @@
 ---
+interface Props {
+    projectId?: string;
+}
+const { projectId } = Astro.props
+
 import { getCollection } from "astro:content";
+
 const allProjects = await getCollection("projects");
+const relatedProjects = await getCollection('projects', ({ id }) => {
+    return id !== projectId
+});
+
 ---
 
-<div class="grid" id="gallery">
-    {allProjects.map((project) =>
-        <a href={`/projects/${project.slug}/`}>
-            <video src={project.data.video.desktopUrl} autoplay muted loop playsinline></video>
-        </a>
-    )}
-</div>
+{projectId == null ? (
+    <div class="grid" id="gallery">
+        {allProjects.map((project) =>
+            <a href={`/projects/${project.slug}/`}>
+                <video src={project.data.video.desktopUrl} autoplay muted loop playsinline></video>
+            </a>
+        )}
+    </div>
+) : (
+    <div class="grid" id="gallery">
+        {relatedProjects.map((project) =>
+            <a href={`/projects/${project.slug}/`}>
+                <video src={project.data.video.desktopUrl} autoplay muted loop playsinline></video>
+            </a>
+        )}
+    </div>
+)}
+
+
 
 <style>
     .grid {
