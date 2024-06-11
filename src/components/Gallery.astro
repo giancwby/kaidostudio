@@ -62,12 +62,10 @@ const allProjects = await Astro.glob('../pages/projects/*.md')
         let tl = gsap.timeline({
             scrollTrigger: {
                 trigger: "#gallery",
-                start: "10% 80%",
-                end: "70% 50%"
-            },
-            defaults: {ease:"expo.out"} 
+                start: "10% 80%"
+            }
         })
         
-        tl.fromTo('#gallery > a', {y:-100, opacity: 0}, {y:0, opacity: 1, duration: 2})
+        tl.fromTo('#gallery > a', {y:-100, opacity: 0}, {y:0, opacity: 1, duration: 1, ease: 'power4.out'})
     }
 </script>

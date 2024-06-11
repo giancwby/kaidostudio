@@ -2,12 +2,13 @@
 layout: '../../layouts/ProjectLayout.astro'
 title: 'AF Hospitality'
 pubDate: 2024-06-04
-description: 'Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.'
 video:
     desktopUrl: '/videos/afh--desktop.webm'
     mobileUrl: '/videos/afh--mobile.webm'
-category: 'Business Website'
-client: 'AF Hospitality'
+service: 'Web Design & Development'
+type: 'Business Website'
 industry: 'Hospitality'
 websiteUrl: 'https://afhospitality.com'
 ---
+
+AF Hospitality, parent company of a mano, Ramen Ron, and Steak & Frice, needed a website to create the same feeling in their restaurants, make their guests feel at home. I actually like eating at these restaurants too so that's cool, right?

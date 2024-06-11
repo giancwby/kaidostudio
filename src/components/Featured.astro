@@ -7,7 +7,7 @@ import Button from "./Button.astro"
 <section id="featured">
     <div class="box">
         <h2>I build <br>all kinds <br>of sites</h2>
-        <p class="body">Insert omegalul description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod </p>
+        <p class="body">I'm not the expert in your industry, you are. Whatever industry you're in, I work with you to showcase that expertise through your website.</p>
         <div class="gallery">
             {allProjects.map((project) =>
                 <a href={project.url}>
@@ -66,6 +66,10 @@ import Button from "./Button.astro"
             >p {
                 font-size: var(--large);
                 text-align: center;
+
+                @media (width > 1024px) {
+                    width: 830px;
+                }
             }
 
             >.gallery {
