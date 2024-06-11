@@ -53,8 +53,8 @@ import Preloader from '../components/Preloader.astro';
 			}}
 		/>
 
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" is:inline></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" is:inline></script>
 	</head>
 	<body>
 		<Preloader/>
@@ -68,5 +68,6 @@ import Preloader from '../components/Preloader.astro';
 <style>
 	body {
 		background-image: url(/images/noise.webp);
+		background-color: #1d229c;
 	}
 </style>

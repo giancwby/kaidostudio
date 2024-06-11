@@ -184,21 +184,21 @@ import '../styles/global.css'
 
 <script>
     //@ts-nocheck
-    const sansBoxes = document.querySelectorAll('.sans-box');
+   const sansBoxes = document.querySelectorAll('.sans-box');
     
     sansBoxes.forEach(sansBox => {
         const sans = sansBox.querySelector('.sans');
         const boxWidth = sansBox.clientWidth;
         const gifWidth = sans.clientWidth;
-
+    
         let position = 0;
         let direction = 1; // 1 for moving right, -1 for moving left
         const speed = 2; // Adjust the speed as necessary
-
+    
         function animate() {
             // Update position
             position += speed * direction;
-
+    
             // Check boundaries and apply transform
             if (position + gifWidth >= boxWidth) {
                 direction = -1; // Change direction to left
@@ -207,17 +207,17 @@ import '../styles/global.css'
                 direction = 1; // Change direction to right
                 sans.style.transform = 'translateY(-50%) scaleX(1)'; // Reset flip
             }
-
+    
             // Apply new position
             sans.style.left = position + 'px';
-
+    
             // Request next frame
             requestAnimationFrame(animate);
         }
-
+    
         // Start the animation
         animate();
-    });
+    }); 
 </script>
 
 <script>

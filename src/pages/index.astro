@@ -329,12 +329,11 @@ import Featured from '../components/Featured.astro';
 </style>
 
 <script>
-    //@ts-nocheck
+	//@ts-nocheck
 	const mobileQuery = window.matchMedia('(max-width: 431px)')
-	const desktopQuery = window.matchMedia('(min-width: 432px)')
-	
-    gsap.fromTo(".hero > .box > .grid > *", { opacity: 0, y:-50 }, { stagger: .15, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
-    gsap.fromTo(".hero > .box > img", { opacity: 0, y:-50 }, { stagger: .15, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
+
+	gsap.fromTo(".hero > .box > .grid > *", { opacity: 0, y:-50 }, { stagger: .15, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
+	gsap.fromTo(".hero > .box > img", { opacity: 0, y:-50 }, { stagger: .15, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
 
 	if (mobileQuery.matches) {
 		let servicesMobileTl = gsap.timeline({
@@ -356,7 +355,7 @@ import Featured from '../components/Featured.astro';
 		servicesMobileTl.fromTo("#astonished", {x:100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1}, "<")
 	}
 
-	else if (desktopQuery.matches) {
+	else {
 		gsap.fromTo(".services > .box > .right-col > h2", {x:-100, opacity:0}, {x:0, opacity: 1, duration: 2})
 		gsap.fromTo(".services > .box > .right-col > p", {x:-100, opacity:0}, {x:0, opacity: 1, duration: 2})
 
@@ -374,5 +373,4 @@ import Featured from '../components/Featured.astro';
 		servicesMobileTl.fromTo("#onehundred", {x:-100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1})
 		servicesMobileTl.fromTo("#astonished", {x:100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1}, "<")
 	}
-
 </script>
