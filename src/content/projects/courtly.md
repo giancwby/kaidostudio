@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/ProjectLayout.astro'
 title: 'Courtly'
 pubDate: 2024-06-05
 video:

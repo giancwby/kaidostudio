@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/ProjectLayout.astro'
 title: 'GRAAR'
 pubDate: 2024-06-04
 video:

@@ -1,5 +1,6 @@
 ---
-const allProjects = await Astro.glob('../pages/projects/*.md')
+import { getCollection } from "astro:content";
+const allProjects = await getCollection("projects");
 
 import Button from "./Button.astro"
 ---
@@ -10,8 +11,8 @@ import Button from "./Button.astro"
         <p class="body">I'm not the expert in your industry, you are. Whatever industry you're in, I work with you to showcase that expertise through your website.</p>
         <div class="gallery">
             {allProjects.map((project) =>
-                <a href={project.url}>
-                    <video src={project.frontmatter.video.desktopUrl} autoplay muted loop playsinline></video>
+                <a href={`/projects/${project.slug}/`}>
+                    <video src={project.data.video.desktopUrl} autoplay muted loop playsinline></video>
                 </a>
             )}
         </div>

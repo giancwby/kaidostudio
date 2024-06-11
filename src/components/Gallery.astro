@@ -1,11 +1,12 @@
 ---
-const allProjects = await Astro.glob('../pages/projects/*.md')
+import { getCollection } from "astro:content";
+const allProjects = await getCollection("projects");
 ---
 
 <div class="grid" id="gallery">
     {allProjects.map((project) =>
-        <a href={project.url}>
-            <video src={project.frontmatter.video.desktopUrl} autoplay muted loop playsinline></video>
+        <a href={`/projects/${project.slug}/`}>
+            <video src={project.data.video.desktopUrl} autoplay muted loop playsinline></video>
         </a>
     )}
 </div>

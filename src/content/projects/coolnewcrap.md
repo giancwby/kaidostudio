@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/ProjectLayout.astro'
 title: 'Cool New Crap'
 pubDate: 2024-06-04
 video:
