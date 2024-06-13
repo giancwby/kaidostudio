@@ -10,4 +10,4 @@ industry: 'Online Weddings'
 websiteUrl: 'https://courtly.com'
 ---
 
-The clean and modern design of Courtly's website reflects their main offering that some might think impossible, a hassle-free wedding. Courtly is also a growing and evolving business so I work with them for more web page designs and development through website maintenance.    
+The clean and modern design of Courtly's website reflects their main service that some might think impossible — a hassle-free wedding. Courtly is also a growing and evolving business so I maintain their website by designing and developing new features.    

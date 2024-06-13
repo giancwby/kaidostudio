@@ -10,4 +10,4 @@ industry: 'Recreation Center Management'
 websiteUrl: 'https://upaceapp.com'
 ---
 
-Upace is a mobile app that offers a membership and reservations platform for community recreation centers. Its web design focuses on straightforward typography and uplifting colors and imagery to reflect their core offering, fitness meets convenience. 
+The upace website reflects their core offering, fitness meets convenience. This was one of the first websites that I worked on back in 2018. How time flies when you're working 👍

@@ -10,4 +10,4 @@ industry: 'Hospitality'
 websiteUrl: 'https://afhospitality.com'
 ---
 
-AF Hospitality, parent company of a mano, Ramen Ron, and Steak & Frice, needed a website to create the same feeling in their restaurants, make their guests feel at home. I actually like eating at these restaurants too so that's cool, right?
+AF Hospitality, the parent company of <a href="https://amano.ph" target="_blank">a mano</a>, <a href="https://ramenron.ph" target="_blank">Ramen Ron</a>, and <a href="https://steakandfrice.ph" target="_blank">Steak & Frice</a>, wanted a website that conveys the same feeling in their restaurants — to make guests feel at home. I actually like eating at these restaurants too so that's cool, right?
