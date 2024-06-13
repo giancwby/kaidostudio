@@ -22,16 +22,14 @@ const relatedProjects = await getCollection('projects', ({ id }) => {
         )}
     </div>
 ) : (
-    <div class="grid" id="gallery">
-        {relatedProjects.map((project) =>
+    <div class="grid" id="gallery" data-type='related'>
+        {relatedProjects.slice(0,5).map((project) =>
             <a href={`/projects/${project.slug}/`}>
-                <video src={project.data.video.desktopUrl} autoplay muted loop playsinline></video>
+                <video src={project.data.video.desktopUrl} autoplay muted loop playsinline class="gallery-video"></video>
             </a>
         )}
     </div>
 )}
-
-
 
 <style>
     .grid {
@@ -62,33 +60,70 @@ const relatedProjects = await getCollection('projects', ({ id }) => {
     }
 </style>
 
+<style is:global>
+    .project-image {
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        border: 1px solid var(--purple);
+        height: 100%;
+    }
+</style>
+
 <script>
     //@ts-nocheck
+    const gallery = document.getElementById('gallery')
+
+    function addExtraImage() {
+        if (gallery.dataset.type != undefined) {
+            const projectVideoWidth = document.querySelector('.gallery-video').getBoundingClientRect().width
+            const projectVideoHeight = document.querySelector('.gallery-video').getBoundingClientRect().height
+        
+            const extraImage = document.createElement('div');
+            extraImage.className = 'extra-image-box'
+            extraImage.innerHTML = '<img src="/gifs/kyle.webp" alt="kyle using computer" class="project-image">'
+            extraImage.style.width = projectVideoWidth + 'px'
+            extraImage.style.height = projectVideoHeight + 'px'
+        
+            gallery.appendChild(extraImage)
+        }
+    }
+
+
+    //
+    //Animations
+    //
+
     const mobileQuery = window.matchMedia('(max-width: 431px)')
 
-    if (mobileQuery.matches) {
-        let tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#gallery",
-                start: "top bottom",
-                end: "bottom bottom",
-                scrub: true,
-                id: "scrub"
-            },
-            defaults: {ease:"expo.out"} 
-        })
-
-        tl.fromTo('#gallery > a', {x:-200, opacity: 0}, {x:0, opacity: 1, stagger: .5})
+    function galleryAnimation() {
+        if (mobileQuery.matches) {
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#gallery",
+                    start: "top bottom",
+                    end: "bottom bottom",
+                    scrub: true,
+                    id: "scrub"
+                },
+                defaults: {ease:"expo.out"} 
+            })
+    
+            tl.fromTo('#gallery > *', {x:-200, opacity: 0}, {x:0, opacity: 1, stagger: .5})
+        }
+    
+        else {
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#gallery",
+                    start: "10% 80%"
+                }
+            })
+            
+            tl.fromTo('#gallery > * > *', {y:-100, opacity: 0}, {y:0, opacity: 1, duration: 2.5, ease: 'power4.out'})
+        }
     }
 
-    else {
-        let tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#gallery",
-                start: "10% 80%"
-            }
-        })
-        
-        tl.fromTo('#gallery > a', {y:-100, opacity: 0}, {y:0, opacity: 1, duration: 1, ease: 'power4.out'})
-    }
+    addExtraImage()
+    galleryAnimation()
 </script>
