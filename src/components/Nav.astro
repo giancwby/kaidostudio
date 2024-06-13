@@ -11,7 +11,7 @@ import '../styles/global.css'
 <nav>
     <div class="box">
         <Logo/>
-        <video src="/gifs/burger-menu.webm" class="burger-menu" id="burger-menu" autoplay muted loop playsinline></video>
+        <img src="/gifs/burger-menu.gif" alt="burger menu" class="burger-menu" id="burger-menu" >
         <div class="sans-box">
             <img src="/gifs/sans-walking.gif" alt="Sans Walking" width="30" height="53" class="sans">
         </div>
@@ -165,6 +165,7 @@ import '../styles/global.css'
 </style>
 
 <script>
+    //@ts-nocheck
     const closeNavMenu = document.getElementById('close-navmenu');
     const openNavMenu = document.getElementById('burger-menu');
     const NavMenu = document.getElementById('navmenu');

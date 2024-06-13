@@ -68,6 +68,14 @@ const relatedProjects = await getCollection('projects', ({ id }) => {
         border: 1px solid var(--purple);
         height: 100%;
     }
+
+    .extra-image-box {
+        display: none;
+
+        @media (width > 431px) {
+            display: block;
+        }
+    }
 </style>
 
 <script>
