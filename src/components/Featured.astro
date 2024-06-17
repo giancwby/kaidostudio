@@ -142,12 +142,12 @@ import Button from "./Button.astro"
                 start: "10% 80%",
                 end: "70% 50%"
             },
-            defaults: {ease:"expo.out"} 
+            defaults: {ease:"expo.out", duration: 2} 
         })
 
         tl.fromTo('#featured > .box > h2', {x:-200, opacity: 0}, {x:0, opacity: 1})
         tl.fromTo('#featured > .box > p', {x:-200, opacity: 0}, {x:0, opacity: 1}, "<")
-        tl.fromTo('#featured > .box > .gallery > *', {y:200, opacity: 0}, {y:0, opacity: 1}, "<")
+        tl.fromTo('#featured > .box > .gallery > * > *', {y:200, opacity: 0}, {y:0, opacity: 1}, "<")
         tl.fromTo('#featured > .box > .featured-button', {x:-200, opacity: 0}, {x:0, opacity: 1}, "<")
     }
 </script>

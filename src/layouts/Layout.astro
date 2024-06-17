@@ -23,8 +23,6 @@ import Preloader from '../components/Preloader.astro';
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>{"Kaido Studio | " + {title}}</title>
-		<meta name="description" content="Kaido Studio is a web design and development studio based in Manila that creates websites that are fast and easy to maintain." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
@@ -39,9 +37,7 @@ import Preloader from '../components/Preloader.astro';
 				}
 			}}
 			extend={{
-				// extending the default link tags
 				link: [{ rel: "icon", href: "/favicon.svg" }],
-				// extending the default meta tags
 				meta: [
 				{
 					name: "twitter:image",
@@ -76,7 +72,7 @@ import Preloader from '../components/Preloader.astro';
 <script>
 	//@ts-nocheck
 	const lenis = new Lenis({
-		lerp: 0.06
+		lerp: 0.07
 	})
 
 	lenis.on('scroll', (e) => {
