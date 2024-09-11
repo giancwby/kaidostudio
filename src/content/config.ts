@@ -5,7 +5,7 @@ const projectsCollection = defineCollection({
     type: 'content',
     schema: z.object({
       title: z.string(),
-      pubDate: z.date(),
+      sortOrder: z.number(),
       video: z.object({
         desktopUrl: z.string(),
         mobileUrl: z.string()
@@ -14,6 +14,7 @@ const projectsCollection = defineCollection({
       type: z.string(),
       industry: z.string(),
       websiteUrl: z.string(),
+      featured: z.string()
     })
 });
 

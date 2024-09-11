@@ -10,12 +10,15 @@ const allProjects = await getCollection("projects");
 const relatedProjects = await getCollection('projects', ({ id }) => {
     return id !== projectId
 });
-
+//@ts-ignore
+const newestToOldestProjects = allProjects.sort((a, b) => Date.parse(a.data.sortOrder) - Date.parse(b.data.sortOrder));
+//@ts-ignore
+const newestToOldestRelatedProjects = relatedProjects.sort((a, b) => Date.parse(a.data.sortOrder) - Date.parse(b.data.sortOrder));
 ---
 
 {projectId == null ? (
     <div class="grid" id="gallery">
-        {allProjects.map((project) =>
+        {newestToOldestProjects.map((project) =>
             <a href={`/projects/${project.slug}/`}>
                 <video src={project.data.video.desktopUrl} autoplay muted loop playsinline></video>
             </a>
@@ -23,7 +26,7 @@ const relatedProjects = await getCollection('projects', ({ id }) => {
     </div>
 ) : (
     <div class="grid" id="gallery" data-type='related'>
-        {relatedProjects.slice(0,5).map((project) =>
+        {newestToOldestRelatedProjects.slice(0,6).map((project) =>
             <a href={`/projects/${project.slug}/`}>
                 <video src={project.data.video.desktopUrl} autoplay muted loop playsinline class="gallery-video"></video>
             </a>
@@ -132,6 +135,7 @@ const relatedProjects = await getCollection('projects', ({ id }) => {
         }
     }
 
-    addExtraImage()
+    // only add function if uneven
+    // addExtraImage()
     galleryAnimation()
 </script>

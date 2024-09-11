@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 const allProjects = await getCollection("projects");
+const featuredProjects = allProjects.filter((project) => project.data.featured === "true")
 
 import Button from "./Button.astro"
 ---
@@ -10,7 +11,7 @@ import Button from "./Button.astro"
         <h2>I build <br>all kinds <br>of sites</h2>
         <p>I'm not the expert in your industry — you are. <br> Whatever industry you're in, I work with you to showcase that expertise through your website.</p>
         <div class="gallery">
-            {allProjects.map((project) =>
+            {featuredProjects.map((project) =>
                 <a href={`/projects/${project.slug}/`}>
                     <video src={project.data.video.desktopUrl} autoplay muted loop playsinline></video>
                 </a>
