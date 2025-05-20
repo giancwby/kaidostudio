@@ -1,6 +1,6 @@
 ---
 title: 'upace'
-sortOrder: 7
+sortOrder: 1
 video:
     desktopUrl: '/videos/upace--desktop.webm'
     mobileUrl: '/videos/upace--mobile.webm'

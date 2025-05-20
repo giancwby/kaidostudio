@@ -1,6 +1,6 @@
 ---
 title: 'GRAAR'
-sortOrder: 4
+sortOrder: 3
 video:
     desktopUrl: '/videos/graar--desktop.webm'
     mobileUrl: '/videos/graar--mobile.webm'

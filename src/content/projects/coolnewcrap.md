@@ -1,6 +1,6 @@
 ---
 title: 'Cool New Crap'
-sortOrder: 1
+sortOrder: 4
 video:
     desktopUrl: '/videos/cnc--desktop.webm'
     mobileUrl: '/videos/cnc--mobile.webm'

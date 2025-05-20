@@ -11,7 +11,7 @@ const relatedProjects = await getCollection('projects', ({ id }) => {
     return id !== projectId
 });
 //@ts-ignore
-const newestToOldestProjects = allProjects.sort((a, b) => Date.parse(a.data.sortOrder) - Date.parse(b.data.sortOrder));
+const newestToOldestProjects = allProjects.sort((a, b) => b.data.sortOrder - a.data.sortOrder);
 //@ts-ignore
 const newestToOldestRelatedProjects = relatedProjects.sort((a, b) => Date.parse(a.data.sortOrder) - Date.parse(b.data.sortOrder));
 ---

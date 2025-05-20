@@ -1,6 +1,6 @@
 ---
 title: 'Courtly'
-sortOrder: 2
+sortOrder: 5
 video:
     desktopUrl: '/videos/courtly--desktop.webm'
     mobileUrl: '/videos/courtly--mobile.webm'

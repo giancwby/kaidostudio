@@ -1,6 +1,6 @@
 ---
 title: 'AF Hospitality'
-sortOrder: 3
+sortOrder: 5
 video:
     desktopUrl: '/videos/afh--desktop.webm'
     mobileUrl: '/videos/afh--mobile.webm'

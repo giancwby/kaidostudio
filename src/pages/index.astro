@@ -9,7 +9,7 @@ import Featured from '../components/Featured.astro';
 			<div class="box">
 				<div class="grid">
 					<img src="/icons/smirk.webp" alt="Smirk Emoji">
-					<h1>Heard You <br>Need a Website</h1>
+					<h1>Heard You Need a Website</h1>
 					<p>Kaido Studio is a Manila based web design and development partnership run by my left and right brain. Together they work hard to give you an amazing looking website that is fast and is easy to maintain.</p>
 				</div>
 				<img src="/images/reigen.webp" alt="Reigen">
@@ -129,14 +129,7 @@ import Featured from '../components/Featured.astro';
 
 					@media (width > 1024px) {
 						font-size: var(--h1);
-					}
-
-					>br {
-						display: none;
-
-						@media (width > 434px) {
-							display: block;
-						}
+						width: 960px;
 					}
 				}
 
@@ -332,7 +325,7 @@ import Featured from '../components/Featured.astro';
 	//@ts-nocheck
 	const mobileQuery = window.matchMedia('(max-width: 431px)')
 
-	gsap.fromTo(".hero > .box > .grid > *", { opacity: 0, y:-50 }, { stagger: .15, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
+	//gsap.fromTo(".hero > .box > .grid > *", { opacity: 0, y:-50 }, { stagger: .15, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
 	gsap.fromTo(".hero > .box > img", { opacity: 0, y:-50 }, { stagger: .15, delay:.5, opacity: 1, y:0, duration:2, ease: "expo.out"});
 
 	if (mobileQuery.matches) {
@@ -373,4 +366,55 @@ import Featured from '../components/Featured.astro';
 		servicesMobileTl.fromTo("#onehundred", {x:-100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1})
 		servicesMobileTl.fromTo("#astonished", {x:100, opacity: 0, rotate: 180, scale: 0}, {x:0, opacity: 1, rotate: 0, scale: 1}, "<")
 	}
+/*
+	const heroH1 = document.querySelector('h1')
+
+	function separateWords(wordElement) {
+		const wordsText = wordElement.textContent
+		const wordsArray = wordsText.split(/(\s+)/)
+
+		wordElement.innerHTML = ''
+		
+		wordsArray.forEach(word => {
+			const wordSpan = document.createElement('span')
+			wordSpan.textContent = word
+			wordElement.appendChild(wordSpan)
+			wordSpan.classList.add('word-span')
+		})
+
+		groupWords(wordElement)
+		animateWords(wordElement)
+	}
+
+	function groupWords(arrayElement) {
+		const spanNodeList = arrayElement.querySelectorAll('span')
+		const spanArray = Array.from(spanNodeList)
+
+		spanArray.forEach(word => {
+			const wordText = word.textContent
+			const wordCharacters = wordText.split('')
+
+			word.innerHTML = ''
+
+			wordCharacters.forEach(character => {
+				const characterSpan = document.createElement('span')
+				characterSpan.textContent = character
+				word.appendChild(characterSpan)
+			})
+		})
+	}
+
+	function animateWords(arrayTextElement) {
+		const wordsNodeList = document.querySelectorAll('.word-span')
+		const wordsForAnimation = Array.from(wordsNodeList)
+		const wordsTl = gsap.timeline()
+		
+		for (let i = 0; i < wordsForAnimation.length; i++) {
+			wordsTl.fromTo(wordsForAnimation[i].childNodes, { opacity: 0, y:50 }, { stagger: .1, delay:1, opacity: 1, y:0, duration:.5, ease: "expo.out"}, '<-0.5');
+			i++
+		}
+	}
+
+	separateWords(heroH1)
+*/
 </script>
