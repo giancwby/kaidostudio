@@ -13,8 +13,10 @@
     "astro": "^4.5.18",
     "astro-seo": "^0.8.3",
     "autoprefixer": "^10.4.19",
+    "motion": "^13.1.0",
     "postcss": "^8.4.38",
-    "postcss-cli": "^11.0.0"
+    "postcss-cli": "^11.0.0",
+    "shaders": "^3.1.455"
   },
   "devDependencies": {
     "postcss-nesting": "^12.1.5"

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>shaders-js</title>
+    </head>
+
+    <body>
+        <canvas id="my-shader" style="width: 100%; height: 100vh;"></canvas>
+        <h1 id="status">Status</h1>
+    </body>
+</html>
+
+<style>
+    * {
+        margin: 0px;
+        background-color: #000000;
+    }
+
+    h1 {
+        position: absolute;
+        top: 0;
+        bottom: -500px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        color: white;
+        box-sizing: border-box;
+        width: fit-content;
+        height: 40px;
+        font-size: 1rem;
+        font-family: Inter;
+        font-weight: 300;
+        background-color: transparent;
+    }
+</style>
+
+<script>
+    import { createShader } from "shaders/js";
+    import { animate } from "motion";
+
+    const canvas = document.getElementById("my-shader");
+    const status = document.getElementById("status");
+
+    let particleScale = 0.5;
+
+    const shader = await createShader(
+        canvas,
+        {
+            components: [
+                {
+                    type: "LinearGradient",
+                    props: {
+                        colorA: "#000000",
+                        colorB: "#000000",
+                    },
+                },
+                {
+                    type: "DotGrid",
+                    props: {
+                        density: 80,
+                        color: "#2B2B2B",
+                        speed: 20,
+                        speedVariance: 0,
+                        twinkle: 1,
+                    },
+                },
+                {
+                    type: "Particles",
+                    id: "particles",
+                    props: {
+                        colorA: "#ffffff",
+                        colorB: "#ffffff",
+                        particleShape: "glow",
+                        scale: particleScale,
+                        size: 0.5,
+                        spread: 0.5,
+                        agitation: 3,
+                        damping: 1,
+                        mouseInfluence: 10,
+                        mouseRadius: 0.2,
+                    },
+                },
+            ],
+        },
+        {
+            onReady: () => {
+                status.textContent = "Status: Working";
+            },
+        },
+        {
+            onError: (reason) => {
+                status.style.color = "red";
+                showFallback(reason);
+            },
+        },
+    );
+
+    canvas.addEventListener("click", () => {
+        animate(particleScale, 7, {
+            duration: 2,
+            ease: "circInOut",
+            onUpdate: (latest) => {
+                status.textContent = latest;
+                particleScale = latest;
+                shader.update("particles", {
+                    scale: particleScale,
+                    size: 0.1,
+                    mouseInfluence: 0.2,
+                    agitation: 0,
+                });
+            },
+        });
+    });
+</script>
