@@ -17,6 +17,7 @@ import Nav from '../components/Nav.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import Preloader from '../components/Preloader.astro';
+import ShaderBackground from '../components/ShaderBackground.astro';
 ---
 
 <!doctype html>
@@ -56,6 +57,7 @@ import Preloader from '../components/Preloader.astro';
 	<body>
 		<Preloader/>
 		<Nav/>
+		<ShaderBackground/>
 		<slot />
 		<CTA/>
 		<Footer/>
@@ -64,8 +66,8 @@ import Preloader from '../components/Preloader.astro';
 
 <style>
 	body {
-		background-image: url(/images/noise.webp);
 		background-color: #1d229c;
+		overflow-x: hidden;
 	}
 </style>
 

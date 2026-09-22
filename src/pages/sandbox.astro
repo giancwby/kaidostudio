@@ -8,17 +8,20 @@
     </head>
 
     <body>
-        <canvas id="my-shader" style="width: 100%; height: 100vh;"></canvas>
-        <h1 id="status">Status</h1>
+        <canvas id="my-shader"></canvas>
     </body>
 </html>
 
 <style>
-    * {
-        margin: 0px;
-        background-color: #000000;
+    body {
+        background-color: black;
     }
-
+    canvas {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        z-index: 2;
+    }
     h1 {
         position: absolute;
         top: 0;
@@ -34,6 +37,7 @@
         font-family: Inter;
         font-weight: 300;
         background-color: transparent;
+        z-index: 1;
     }
 </style>
 
@@ -50,23 +54,7 @@
         canvas,
         {
             components: [
-                {
-                    type: "LinearGradient",
-                    props: {
-                        colorA: "#000000",
-                        colorB: "#000000",
-                    },
-                },
-                {
-                    type: "DotGrid",
-                    props: {
-                        density: 80,
-                        color: "#2B2B2B",
-                        speed: 20,
-                        speedVariance: 0,
-                        twinkle: 1,
-                    },
-                },
+                /*
                 {
                     type: "Particles",
                     id: "particles",
@@ -75,20 +63,87 @@
                         colorB: "#ffffff",
                         particleShape: "glow",
                         scale: particleScale,
-                        size: 0.5,
+                        size: 1.5,
                         spread: 0.5,
                         agitation: 3,
                         damping: 1,
                         mouseInfluence: 10,
+                        //mouseInfluence: 10,
                         mouseRadius: 0.2,
+                    },
+                }
+                */
+                {
+                    type: "Particles",
+                    id: "particles",
+                    props: {
+                        colorA: "#ffffff",
+                        colorB: "#ffffff",
+                        particleShape: "glow",
+                        scale: 7,
+                        size: 0.1,
+                        spread: 0.5,
+                        agitation: 0,
+                        damping: 1,
+                        mouseInfluence: 0.1,
+                        mouseRadius: 0.1,
+                    },
+                },
+                /*
+                {
+                    type: "Text",
+                    props: {
+                        text: "Next-gen Digital Experiences",
+                        fontFamily: "Geist Pixel",
+                        fontWeight: 300,
+                        fontSize: 0.15,
+                        letterSpacing: -0.02,
+                        width: 0.8,
+                        lineHeight: 1
+                    },
+                },
+                */
+                {
+                    type: "Glass",
+                    props: {
+                        center: {
+                            type: "mouse-position",
+                            smoothing: 0.12,
+                            momentum: 0.2
+                        },
+                        edgeSoftness: 5,
+                        blur: 0,
+                        thickness: 2,
+                        innerZoom: 1,
+                        fresnel: 5,
+                        shape: {
+                            type: "octahedron3D",
+                            sizeX: 0.27,
+                            sizeY: 0.27,
+                            sizeZ: 0.27,
+                            rounding: 0.0,
+                            rotX: 25,
+                            rotY: {
+                                type: "auto-animate",
+                                mode: "loop",
+                                outputMin: 1,
+                                outputMax: 360,
+                                speed: 0.5,
+                            },
+                            rotZ: {
+                                type: "auto-animate",
+                                mode: "loop",
+                                outputMin: 1,
+                                outputMax: 360,
+                                speed: 0.5,
+                            },
+                        },
                     },
                 },
             ],
         },
         {
-            onReady: () => {
-                status.textContent = "Status: Working";
-            },
+            onReady: () => {},
         },
         {
             onError: (reason) => {
@@ -98,6 +153,7 @@
         },
     );
 
+    /*
     canvas.addEventListener("click", () => {
         animate(particleScale, 7, {
             duration: 2,
@@ -114,4 +170,5 @@
             },
         });
     });
+    */
 </script>

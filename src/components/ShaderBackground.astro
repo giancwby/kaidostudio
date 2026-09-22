@@ -1,0 +1,117 @@
+---
+---
+
+
+<canvas id="shaderBackground"></canvas>
+
+<style>
+	#shaderBackground {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: -1;
+	}
+</style>
+
+<script>
+    import { createShader } from "shaders/js";
+    async function initShader() {
+        const canvas = document.getElementById("shaderBackground");
+    
+        const shader = await createShader(
+            canvas,
+            {
+                components: [
+                    {
+                        type: "FlowingGradient",
+                        props: {
+                            colorB: "#1B1F8E",
+                            colorC: "#1B1F8E",
+                            distortion: 1,
+                        }
+                    },
+                    {
+                        type: "Liquify",
+                        props: {
+                        },
+                    },
+                    {
+                        type: "Glass",
+                        props: {
+                            center: {
+                                type: "mouse-position",
+                                smoothing: 0.12,
+                                momentum: 0.2
+                            },
+                            edgeSoftness: 0,
+                            blur: 0,
+                            thickness: 2,
+                            innerZoom: 1,
+                            fresnel: 5,
+                            fresnelColor: "#ff4d6a",
+                            shape: {
+                                type: "octahedron3D",
+                                sizeX: 0.27,
+                                sizeY: 0.27,
+                                sizeZ: 0.27,
+                                rounding: 0.0,
+                                rotX: 25,
+                                rotY: {
+                                    type: "auto-animate",
+                                    mode: "loop",
+                                    outputMin: 1,
+                                    outputMax: 360,
+                                    speed: 0.5,
+                                    easing: 'linear'
+                                },
+                                rotZ: {
+                                    type: "auto-animate",
+                                    mode: "loop",
+                                    outputMin: 1,
+                                    outputMax: 360,
+                                    speed: 0.5,
+                                    easing: 'linear'
+                                },
+                            },
+                        },
+                    },
+                    {
+                        type: "MagneticFilings",
+                        props: {
+                            colorA: "#E2E2E2",
+                            shape: "glow",
+                            count: 4000,
+                            size: 0.5,
+                            strength: 0.5
+                        },
+                        blendMode: "multiply",
+                    },
+                    
+                ],
+            },
+            {
+                onReady: () => {
+                    canvas.style.opacity = '1'
+                },
+            },
+        );
+    }
+
+    function resizeCanvas() {
+        const canvas = document.getElementById("shaderBackground");
+        if (canvas) {
+            canvas.style.width = `${window.innerWidth}px`;
+            canvas.style.height = `${window.innerHeight}px`;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initShader();
+    });
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+    });
+
+</script>

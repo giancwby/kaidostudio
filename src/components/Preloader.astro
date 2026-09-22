@@ -2,13 +2,11 @@
 ---
 
 <div id="preloader" class="visible">
-    <img src="/gifs/spyro.webp" alt="spyro">
 </div>
 
 <style>
     div {
-		background-image: url(/images/noise.webp);
-        background-color: #1d229c;
+        background-color: var(--blue);
         position: fixed;
         top: 0;
         left: 0;
@@ -18,39 +16,22 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        opacity: 0;
+        pointer-events: none;
     }
 
     .visible {
         opacity: 1;
         transition: var(--transition);
     }
-
-    .hidden {
-        opacity: 0;
-        transition: var(--transition);
-    }
 </style>
 
 <script>
-    // Hide the preloader once the page has finished loading
-    window.addEventListener('load', function(){
+    document.addEventListener('DOMContentLoaded', () => {
         const preloader = document.getElementById('preloader');
         
-        if (preloader.classList.contains("visible")) {
-            preloader.classList.remove("visible");
-
-            setTimeout(function() {
-                preloader.classList.add("hidden");
-            }, 500);
-        }
-
-        else {
-            preloader.classList.remove("hidden");
-            preloader.classList.add("visible");
-        }
-
         setTimeout(function() {
-            preloader.style.display = 'none';
-        }, 800);
+            preloader.style.opacity = "0";
+        }, 1000);
     });
 </script>
