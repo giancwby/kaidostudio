@@ -2,68 +2,36 @@
 ---
 
 
-<canvas id="shaderBackground"></canvas>
+<canvas id="shaderShape"></canvas>
 
 <style>
-	#shaderBackground {
-		position: fixed;
+	#shaderShape {
+		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100vw;
 		height: 100lvh;
-		z-index: -1;
+		z-index: 1;
 	}
 </style>
 
 <script>
     import { createShader } from "shaders/js";
     async function initShader() {
-        const canvas = document.getElementById("shaderBackground");
+        const canvas = document.getElementById("shaderShape");
     
         const shader = await createShader(
             canvas,
             {
                 components: [
                     {
-                        type: "FlowingGradient",
-                        props: {
-                            colorB: "#1B1F8E",
-                            colorC: "#1B1F8E",
-                            distortion: 1,
-                        }
-                    },
-                    {
-                        type: "Liquify",
-                        props: {
-                        },
-                    },
-                    
-                    {
-                        type: "MagneticFilings",
-                        props: {
-                            colorA: "#E2E2E2",
-                            shape: "glow",
-                            count: 4000,
-                            size: 0.5,
-                            strength: 1
-                        },
-                        blendMode: "multiply",
-                    },
-                    {
-                        type: "ChromaFlow",
-                        props: {
-                            baseColor: "#FF4D6A",
-                            upColor: "#6B17E6",
-                            downColor: "#6B17E6",
-                            leftColor: "#6B17E6",
-                            rightColor: "#6B17E6",
-                            radius: 1,
-                            intensity: 2,
-                        },
-                    },
-                    {
                         type: "Glass",
                         props: {
+                            center: {
+                                type: "mouse-position",
+                                smoothing: 0.12,
+                                momentum: 0.2
+                            },
                             edgeSoftness: 0,
                             blur: 0,
                             thickness: 2,
@@ -96,6 +64,17 @@
                             },
                         },
                     },
+                    {
+                        type: "MagneticFilings",
+                        props: {
+                            colorA: "#E2E2E2",
+                            shape: "glow",
+                            count: 4000,
+                            size: 0.5,
+                            strength: 0.5
+                        },
+                        blendMode: "multiply",
+                    },
                     
                 ],
             },
@@ -108,7 +87,7 @@
     }
 
     function resizeCanvas() {
-        const canvas = document.getElementById("shaderBackground");
+        const canvas = document.getElementById("shaderShape");
         if (canvas) {
             canvas.style.width = `${window.innerWidth}px`;
             canvas.style.height = `${window.innerHeight}px`;
