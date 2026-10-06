@@ -18,12 +18,8 @@ const {frontmatter, thisProjectId} = Astro.props
                     <p>{frontmatter.service}</p>
                 </div>
                 <div class="item">
-                    <p class="bold">Type</p>
-                    <p>{frontmatter.type}</p>
-                </div>
-                <div class="item">
-                    <p class="bold">Industry</p>
-                    <p>{frontmatter.industry}</p>
+                    <p class="bold">Stack</p>
+                    <p>{frontmatter.stack}</p>
                 </div>
             </div>
             <video src={frontmatter.video.mobileUrl} autoplay loop muted playsinline class="video--mobile"></video>

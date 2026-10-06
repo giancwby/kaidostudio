@@ -14,7 +14,8 @@ const projectsCollection = defineCollection({
       type: z.string(),
       industry: z.string(),
       websiteUrl: z.string(),
-      featured: z.string()
+      featured: z.string(),
+      stack: z.string().optional(),
     })
 });
 
