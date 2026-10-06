@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 const allProjects = await getCollection("projects");
-const featuredProjects = allProjects.filter((project) => project.data.featured === "true")
+const featuredProjects = allProjects.filter((project) => project.data.featured === "true").sort((a, b) => b.data.sortOrder - a.data.sortOrder);
 
 import Button from "./Button.astro"
 ---
